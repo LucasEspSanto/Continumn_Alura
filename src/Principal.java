@@ -1,4 +1,6 @@
 import esanto.lucas.continumn.calc.CalcDeTempo;
+import esanto.lucas.continumn.calc.FiltroRecomendado;
+import esanto.lucas.continumn.models.Episodio;
 import esanto.lucas.continumn.models.Filme;
 import esanto.lucas.continumn.models.Serie;
 import esanto.lucas.continumn.models.Titulo;
@@ -56,6 +58,13 @@ public class Principal {
 
         System.out.println("Tempo para assitir tudo: " + calc.getTempoTotal());
 
+        FiltroRecomendado filtro = new FiltroRecomendado();
+        filtro.filtra(f1);
+
+        Episodio ep = new Episodio();
+        ep.setNumero(1);
+        ep.setSerie(d);
+        ep.setNome("Piloto");
 
 
 

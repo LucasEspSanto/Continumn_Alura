@@ -1,6 +1,8 @@
 package esanto.lucas.continumn.models;
 
-public class Serie extends Titulo{
+import esanto.lucas.continumn.calc.Classificavel;
+
+public class Serie extends Titulo implements Classificavel {
     private int temporadas;
     private int episodiosPorTemporada;
     private boolean ativa;
@@ -42,5 +44,10 @@ public class Serie extends Titulo{
     @Override
     public double getDuracao() {
         return temporadas * episodiosPorTemporada * minutosPorEpisodio;
+    }
+
+    @Override
+    public int getClassificacao() {
+        return (int) pegaMedia() / 2;
     }
 }
