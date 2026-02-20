@@ -3,34 +3,40 @@ import esanto.lucas.continumn.calc.FiltroRecomendado;
 import esanto.lucas.continumn.models.Episodio;
 import esanto.lucas.continumn.models.Filme;
 import esanto.lucas.continumn.models.Serie;
-import esanto.lucas.continumn.models.Titulo;
+
+import java.util.ArrayList;
 
 public class Principal {
     public static void main(String[] args) {
 
-        Filme f1 = new Filme();
+        Filme f1 = new Filme("F1");
 
         f1.setNome("F1: The Movie");
         f1.setAnoDeLancamento(2025);
         f1.setGenero("Ação");
         f1.setDuracao(130);
         f1.setIncluidoNoPlano(true);
+        f1.setDiretor("Joseph Kosinski");
 
         f1.avalia(8.2);
         f1.avalia(7.6);
         f1.avalia(6.8);
 
+        var drive = new Filme("Drive.");
+
+        drive.setNome("Drive");
+
             System.out.println("(" + f1.getAnoDeLancamento() + ") "+ f1.getNome() + " " + f1.getDuracao());
             System.out.println("Genero: " + f1.getGenero());
             System.out.println(f1.pegaMedia() + "/10");
+            System.out.println(f1.getDiretor());
             if(f1.getIncluidoNoPlano()){
                 System.out.println("Assistir agora");
             }else{
                 System.out.println("Assinar Plus");
             }
 
-        Serie d = new Serie();
-        d.setNome("Dark");
+        Serie d = new Serie("Dark");
         d.setAtiva(true);
         d.setTemporadas(5);
         d.setEpisodiosPorTemporada(15);
@@ -67,6 +73,12 @@ public class Principal {
         ep.setNome("Piloto");
 
 
+        System.out.println(ep.getNumero() + " | " + ep.getNome());
+
+        ArrayList<Filme> lista = new ArrayList<>();
+        lista.add(drive);
+        lista.add(f1);
+        System.out.println(lista);
 
 
     }

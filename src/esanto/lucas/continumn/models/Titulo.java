@@ -1,6 +1,8 @@
 package esanto.lucas.continumn.models;
 
-public class Titulo {
+import java.util.Collections;
+
+public class Titulo implements Comparable<Titulo> {
     private String nome;
     private int anoDeLancamento;
     private boolean incluidoNoPlano;
@@ -8,6 +10,10 @@ public class Titulo {
     private int numeroDeAvaliacoes;
     private String genero;
     private double duracao;
+
+    public Titulo(String nome) {
+        this.nome = nome;
+    }
 
     public void setNome(String nome) {
         this.nome = nome;
@@ -56,5 +62,10 @@ public class Titulo {
 
     public double pegaMedia(){
         return somaAvaliacoes / numeroDeAvaliacoes;
+    }
+
+    @Override
+    public int compareTo(Titulo outroTitulo) {
+        return this.getNome().compareTo(outroTitulo.getNome());
     }
 }
