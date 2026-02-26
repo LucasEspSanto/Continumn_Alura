@@ -1,15 +1,30 @@
 package esanto.lucas.continumn.models;
 
-import java.util.Collections;
+import com.google.gson.annotations.SerializedName;
+import esanto.lucas.continumn.exeptions.TitleNotFoundExepion;
 
 public class Titulo implements Comparable<Titulo> {
+    @SerializedName("Title")
     private String nome;
+    @SerializedName("Year")
     private int anoDeLancamento;
     private boolean incluidoNoPlano;
     private double somaAvaliacoes;
     private int numeroDeAvaliacoes;
+    @SerializedName("Genre")
     private String genero;
     private double duracao;
+
+    public Titulo(TituloOmdb t) {
+        if (t.title() == null) {
+            throw new TitleNotFoundExepion("Este titulo não existe ou não temos em nosso catalogo");
+        } else {
+            this.nome = t.title();
+        }
+        this.genero = t.genre();
+        this.anoDeLancamento = Integer.parseInt(t.year());
+        this.duracao = Double.parseDouble(t.runtime().replaceAll("[^0-9.]", ""));
+    }
 
     public Titulo(String nome) {
         this.nome = nome;
